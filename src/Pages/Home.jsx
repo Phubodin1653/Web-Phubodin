@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useCallback, memo } from "react"
 import { Github, Mail, ExternalLink, Instagram, Sparkles } from "lucide-react"
-import { DotLottieReact } from '@lottiefiles/dotlottie-react'
 import AOS from 'aos'
 import 'aos/dist/aos.css'
 
@@ -155,23 +154,6 @@ const Home = () => {
     return () => clearTimeout(timeout);
   }, [handleTyping]);
 
-  // Lottie configuration
-  const lottieOptions = {
-    src: "https://lottie.host/4953c6ff-f8b0-45cd-b667-baf472bba2ae/EHnn08K4mW.lottie",
-    loop: true,
-    autoplay: true,
-    rendererSettings: {
-      preserveAspectRatio: 'xMidYMid slice',
-      progressiveLoad: true,
-    },
-    style: { width: "100%", height: "100%" },
-    className: `w-full h-full transition-all duration-500 ${
-      isHovering 
-        ? "scale-[180%] sm:scale-[160%] md:scale-[150%] lg:scale-[145%] rotate-2" 
-        : "scale-[175%] sm:scale-[155%] md:scale-[145%] lg:scale-[140%]"
-    }`
-  };
-
   return (
     <div className="min-h-screen bg-[#030014] overflow-hidden px-[5%] sm:px-[5%] lg:px-[10%] " id="Home">
       <div className={`relative z-10 transition-all duration-1000 ${isLoaded ? "opacity-100" : "opacity-0"}`}>
@@ -222,7 +204,7 @@ const Home = () => {
               </div>
             </div>
 
-            {/* Right Column - Optimized Lottie Animation */}
+            {/* Right Column - Coding GIF */}
             <div className="w-full py-[10%] sm:py-0 lg:w-1/2 h-auto lg:h-[600px] xl:h-[750px] relative flex items-center justify-center order-2 lg:order-2 mt-8 lg:mt-0"
               onMouseEnter={() => setIsHovering(true)}
               onMouseLeave={() => setIsHovering(false)}
@@ -234,10 +216,14 @@ const Home = () => {
                 }`}>
                 </div>
 
-                <div className={`relative lg:left-12 z-10 w-full opacity-90 transform transition-transform duration-500 ${
+                <div className={`relative lg:left-12 z-10 w-full h-full flex items-center justify-center opacity-90 transform transition-transform duration-500 ${
                   isHovering ? "scale-105" : "scale-100"
                 }`}>
-                  <DotLottieReact {...lottieOptions} />
+                  <img 
+                    src="/Coding.gif" 
+                    alt="Coding animation" 
+                    className="w-4/5 h-4/5 object-cover object-center"
+                  />
                 </div>
 
                 <div className={`absolute inset-0 pointer-events-none transition-all duration-700 ${
