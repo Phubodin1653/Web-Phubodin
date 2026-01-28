@@ -1,0 +1,194 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+body.login-page {
+    background: black;
+    overflow: hidden;
+}
+
+/* Background */
+.bg {
+    position: fixed;
+    inset: 0;
+    background: url("../ภาพจอ.jpg") center/cover no-repeat;
+    filter: blur(10px) brightness(0.35);
+    z-index: -1;
+}
+
+/* Login Box */
+.login-box {
+    width: 400px;
+    padding: 45px;
+    background: rgba(0,0,0,0.65);
+    border-radius: 20px;
+    box-shadow: 0 0 80px rgba(0,0,0,0.9);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+    animation: fadeIn 1s ease;
+    transition: all 0.3s ease;
+}
+
+h1 {
+    letter-spacing: 3px;
+    margin-bottom: 30px;
+    font-size: 22px;
+}
+
+input {
+    width: 100%;
+    padding: 14px;
+    margin: 12px 0;
+    background: #111;
+    border: 1px solid #333;
+    color: white;
+    border-radius: 10px;
+}
+
+button {
+    width: 100%;
+    padding: 14px;
+    margin-top: 22px;
+    background: linear-gradient(135deg, #444, #000);
+    border: none;
+    color: white;
+    cursor: pointer;
+    border-radius: 10px;
+    position: relative;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.8), inset 0 -3px 8px rgba(0,0,0,0.5), inset 0 1px 2px rgba(255,255,255,0.1);
+    transform: translateY(-3px);
+    transition: all 0.2s ease;
+}
+
+button:hover {
+    box-shadow: 0 12px 30px rgba(0,0,0,0.9), inset 0 -3px 8px rgba(0,0,0,0.5), inset 0 1px 2px rgba(255,255,255,0.1), 0 0 25px rgba(255,255,255,0.4);
+    transform: translateY(-5px);
+}
+
+button:active {
+    box-shadow: 0 0px 10px rgba(0,0,0,0.8), inset 0 -1px 3px rgba(0,0,0,0.5), inset 0 1px 2px rgba(255,255,255,0.1), 0 0 30px rgba(255,255,255,0.6);
+    transform: translateY(-1px);
+    background: linear-gradient(135deg, #666, #222);
+}
+
+button::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 10px;
+    background: linear-gradient(135deg, rgba(255,255,255,0.2), rgba(255,255,255,0));
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    pointer-events: none;
+}
+
+button:active::after {
+    opacity: 1;
+    animation: glow 0.4s ease-out;
+}
+
+@keyframes glow {
+    0% {
+        box-shadow: inset 0 0 20px rgba(255,255,255,0.8);
+        opacity: 1;
+    }
+    100% {
+        box-shadow: inset 0 0 0px rgba(255,255,255,0);
+        opacity: 0;
+    }
+}
+
+.note {
+    margin-top: 20px;
+    font-size: 12px;
+    opacity: 0.5;
+}
+
+/* Icon Corner */
+.icon-corner {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 100;
+}
+
+.corner-icon {
+    width: 60px;
+    height: 60px;
+    opacity: 0.7;
+    transition: all 0.3s ease;
+    filter: drop-shadow(0 0 10px rgba(255,255,255,0.3));
+    cursor: pointer;
+}
+
+.corner-icon:hover {
+    opacity: 1;
+    transform: scale(1.15) rotate(-10deg);
+    filter: drop-shadow(0 0 20px rgba(255,255,255,0.6));
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translate(-50%, -55%); }
+    to   { opacity: 1; transform: translate(-50%, -50%); }
+}
+
+/* Loading Spinner */
+.loader-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 9999;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.loader-overlay.active {
+    display: flex;
+}
+
+.spinner {
+    width: 60px;
+    height: 60px;
+    border: 4px solid rgba(255, 255, 255, 0.2);
+    border-top: 4px solid #fff;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.loader-text {
+    color: white;
+    font-size: 18px;
+    letter-spacing: 2px;
+    animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 0.5; }
+    50% { opacity: 1; }
+}
+
+#error-msg {
+    color: red;
+    font-size: 14px;
+    margin-top: 6px;
+    text-align: left;
+}
+
+#error-msg.hidden {
+    display: none;
+}
